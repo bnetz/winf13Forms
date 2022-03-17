@@ -56,7 +56,7 @@ $f = new Formhandler($_POST);
     <div class="container">
         <div class="text-center mt-5">
             <h1>7 Formularhandling mit OOP - LEVEL 2 (medium)</h1>
-            <p class="lead">Die Klasse <code>Formhandler</code> ist smarter und simuliert eine Datenbankverbindung.</p>
+            <p class="lead">Zum Aufwärmen: In der Klasse <code>Formhandler</code> einige Methoden schreiben, u.a. Getter, und in index.php verwenden.</p>
         </div>
 
         <!-- #### FORMULAR START ### -->
