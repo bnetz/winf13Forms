@@ -7,13 +7,6 @@ error_reporting(E_ALL);
 require_once('classes/Formhandler.class.php');
 $f = new Formhandler($_POST);
 
-// Namen der Eingabefelder holen
-$rbTermin = $f->getRbTerminName();
-$selKuchen = $f->getSelKuchenName();
-$btSubmit = $f->getBtSubmitName();
-
-if(isset($f->))
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +56,7 @@ if(isset($f->))
     <div class="container">
         <div class="text-center mt-5">
             <h1>7 Formularhandling mit OOP - LEVEL 2 (medium)</h1>
-            <p class="lead">Die Klasse <code>Formhandler</code> ist smarter und kennt jetzt die Namen unserer Formularfelder.</p>
+            <p class="lead">Die Klasse <code>Formhandler</code> ist smarter und simuliert eine Datenbankverbindung.</p>
         </div>
 
         <!-- #### FORMULAR START ### -->
@@ -72,26 +65,31 @@ if(isset($f->))
             <form action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" method="POST">
                 <div class="row">
                     <div class="col-12 text-center mb-3">
-                        <label for="<?php echo $selKuchen; ?>">Welchen Kuchen möchtest du backen?</label>
-                        <select name="<?php echo $selKuchen; ?>">
+                        <label for="selKuchen">Für welchen Kuchen brauchst du ein Rezept?</label>
+                        <select name="selKuchen">
                             <option value="apfel">Apfelkuchen</option>
                             <option value="donauwelle">Donauwelle</option>
                             <option value="brownies">Brownies</option>
                             <option value="muffins">Muffins</option>
                         </select>
                     </div>
+
+                    <div class="col-12 text-center mb-3">
+                        <label for="tfGrund">Warum willst du einen Kuchen backen?</label>
+                        <input type="text" name="tfGrund" placeholder="z.B. »Zu spät in den Unterricht gekommen«" class="col-4">
+</div>
                     <div class="col-12 text-center mb-3">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="<?php echo $rbTermin; ?>" id="rbTerminMontag" value="montag" checked>
+                            <input class="form-check-input" type="radio" name="rbTermin" id="rbTerminMontag" value="montag" checked>
                             <label class="radio-inline" for="rbTerminMontag">Montag</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="<?php echo $rbTermin; ?>" id="rbTerminFreitag" value="freitag">
+                            <input class="form-check-input" type="radio" name="rbTermin" id="rbTerminFreitag" value="freitag">
                             <label class="radio-inline" for="rbTerminFreitag">Freitag</label>
                         </div>
                     </div>
                     <div class="col-12 text-center mb-3">
-                        <input type="submit" name="<?php echo $btSubmitName; ?>">
+                        <input type="submit" name="btSubmit">
                     </div>
                 </div>
             </form>
@@ -104,22 +102,16 @@ if(isset($f->))
 
         <div class="row mt-5">
             <h2>Formularanalyse</h2>
+            <p>Hier soll entsprechend der Realität einer der folgenden Sätze ausgegeben werden:</p>
+            <ul>
+                <li>Formular wurde nicht abgeschickt - gähn.</li>
+                <li>Formular wurde abgeschickt, aber das Textfeld wurde LEER abgeschickt!!</li>
+                <li>Formular wurde abgeschickt, Grund: »Zu spät in den Unterricht gekommen«, Kuchenrezept: Apfelkuchen, Termin: Freitag</li>
+            </ul>
+            <p>Verwenden Sie dazu die Methoden <code>isSubmitted()</code>, <code>isTfNameEmpty()</code>, <code>getValueOfTfGrund()</code>, <code>getValueOfSelKuchen()</code>, <code>getValueOfRbTermin()</code>. Leider müssen Sie diese Methoden alle in der Formhandler-Klasse schreiben.</p>
             <?php
-            if ($f->isSubmitted()) {
-                echo "<p>Formular wurde abgeschickt - geprüft mit Methode <code>isSubmitted()</code>.</p>";
-                echo "<p>Ist das tfName leer? Wir prüfen <code>isTfNameEmpty()</code>:</p>";
-                if ($f->isTfNameEmpty()) {
-                    echo "<p><strong>Formular wurde abgeschickt, aber das Textfeld wurde LEER abgeschickt!!</strong></p>";
-                } else {
-                    echo "<p><strong>Formular wurde abgeschickt, und im Textfeld steht " . $f->getValueOfTfName() . "</strong></p>";
-                }
-            } else {
-                echo "<p>Formular wurde NICHT abgeschickt - geprüft mit Methode <code>isSubmitted()</code>.</p>";
-            }
+           
             ?>
-            <h2>Formularanalyse all-in-one</h2>
-            <p>Hier verwenden wir die Methode <code>processInputAdvanced()</code>:</p>
-            <p><?php echo $f->processInputAdvanced(); ?></p>
         </div>
     </div>
 
