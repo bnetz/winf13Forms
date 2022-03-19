@@ -7,15 +7,20 @@ class Dbconnect
 {
   // Klassenvariablen (Attribute)
   protected $verbindung;
-  protected $dbPath = __DIR__ . "/sqliteDatabases/";
-  protected $dbName;
+  protected $pathToDatabases = "/sqliteDatabases/"; // wo liegen die Datenbanken?
+  protected $myDatabase;
   // Konstruktor
-  public function __construct($pDbName) {
-    $this->dbName = $this->dbPath . $pDbName;
+  public function __construct($pDatabaseName, $pPath) {
+    $this->myDatabase = $pPath . $this->pathToDatabases . $pDatabaseName;
     
-    // SO KÖNNTE MAN DAS TESTEN:
-    // echo "<p>Datenbankpfad komplett: " . $this->dbName . "</p>";
-    $this->db_verbindung_oeffnen($this->dbName);
+    echo "<p>--- Dbconnect initialisiert, Datenbankpfad lautet: " . $this->myDatabase . "---</p>";
+    try {
+    $this->db_verbindung_oeffnen($this->myDatabase);
+    } catch (Exception $error)
+		{
+      echo "<h1>Datenbank konnte nicht gefunden werden. Skript bricht ab.</h1>";
+      exit();
+    }
   }
   public function readDatabase($sql) {
     $abfrage 		= $this->getVerbindung()->prepare($sql);
@@ -28,15 +33,15 @@ class Dbconnect
   }
 	public function db_verbindung_oeffnen($db_name)
 	{
-		if(!file_exists($this->dbName)) {
+		if(!file_exists($this->myDatabase)) {
 		/*
 			Problem: Wenn Datenbank-File nicht vorhanden legt PDO eine neue (leere) Datei mit diesem Namen an. Siehe auch http://php.net/manual/en/pdo.construct.php
-			 Das vermeiden wir, indem wir prüfen, ob es die Datei gibt. Wenn NICHT Datei/Pfad existiert ($this->dbName), dann erzeuge einen Fehler.
+			 Das vermeiden wir, indem wir prüfen, ob es die Datei gibt. Wenn NICHT Datei/Pfad existiert ($this->myDatabase), dann erzeuge einen Fehler.
 		*/
-			throw new Exception("*** Datenbank " . $this->dbName . " konnte nicht gefunden werden! ***");
+			throw new Exception("*** Datenbank " . $this->myDatabase . " konnte nicht gefunden werden! ***");
 		}
 		// Verbindungsdaten für PDO/SQLite-Zugriff festlegen
-		$serverdaten 	= "sqlite:$this->dbName";
+		$serverdaten 	= "sqlite:$this->myDatabase";
 		try {
 		// Verbindung zur DB öffnen ($verbindung wird auch als "Database Handle" bezeichnet)
 			$this->verbindung		= new PDO($serverdaten);
