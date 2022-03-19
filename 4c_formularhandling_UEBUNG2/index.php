@@ -88,7 +88,7 @@ $formhandler = new Formhandler($_POST);
                 }
                 echo "</p>";
             ?>
-            <p>[Aufgabe Methode <code>formIsSubmitted()</code>]<br>
+            <p>[Aufgabe Methode <code>showContentOfTextfield()</code>]<br>
                 <?php $formhandler->showContentOfTextfield(); ?></p>
 
         </div>
