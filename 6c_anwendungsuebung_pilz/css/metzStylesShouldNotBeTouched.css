@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Ubuntu+Mono&display=swap');
+
+body {
+	background-color: #3a0071;
+	font-family: 'Ubuntu Mono', monospace;	color: #fff;
+font-size: 1.45em;
+	margin: 88px;
+	padding: 8px;
+}
+
+.logo {
+	text-align: center;
+	line-height: 30%;
+	font-family: 'Righteous', cursive;
+	font-size: 3.6em;
+	color: #FFFFFF;
+}
+code {
+	color: #ff88ee;
+}
+p.logo {
+	font-size: 1.45em;
+}
+.bodyStartseite {
+	width: 40em;
+	margin: auto;
+	margin-top: 4em;
+}
+
+a, a:visited {
+	color: #D10000;
+	text-decoration: none;
+}
+a:hover {
+	color: #ff0000;
+	transition: 0.8s;
+	font-weight: bold;
+	text-shadow: #FFE000 2px 2px 0;
+}
