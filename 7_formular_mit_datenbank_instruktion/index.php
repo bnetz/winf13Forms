@@ -14,7 +14,7 @@ $dbc = new Dbconnect('personenTest.db', __DIR__); // __DIR__ gibt den Pfad zur a
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>7 - HTML-Formular mit Datenbankanbindung</title>
+    <title>7 - HTML-Formular mit SQLite-Datenbankanbindung</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->

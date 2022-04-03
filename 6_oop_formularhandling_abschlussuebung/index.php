@@ -16,7 +16,7 @@ $f = new Formhandler($_POST);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>7 Formularhandling mit OOP - Verbessert</title>
+    <title>6 Formularhandling mit OOP - Abschlussübung</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -55,7 +55,7 @@ $f = new Formhandler($_POST);
     <!-- Page content-->
     <div class="container">
         <div class="text-center mt-5">
-            <h1>7 Formularhandling mit OOP - LEVEL 2 (medium)</h1>
+            <h1>6 Formularhandling mit OOP - Abschlussübung</h1>
             <p class="lead">Zum Aufwärmen: In der Klasse <code>Formhandler</code> einige Methoden schreiben, u.a. Getter, und in index.php verwenden.</p>
         </div>
 
